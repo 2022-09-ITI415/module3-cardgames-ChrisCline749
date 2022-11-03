@@ -37,6 +37,7 @@ public class Prospector : MonoBehaviour {
 		layout = GetComponent<Layout>();
 		layout.ReadLayout(layoutXML.text);
 		drawPile = ConvertListCardsToListCardProspectors(deck.cards);
+		LayoutGame();
 	}
 
 	List<CardProspector> ConvertListCardsToListCardProspectors(List<Card> lCD)
@@ -51,4 +52,36 @@ public class Prospector : MonoBehaviour {
 		return lCP;
     }
 
+	CardProspector Draw()
+    {
+		CardProspector cd = drawPile[0];
+		drawPile.RemoveAt(0);
+		return cd;
+    }
+
+	void LayoutGame()
+    {
+		if (layoutAnchor == null)
+        {
+			GameObject tGo = new GameObject("_LayoutAnchor");
+			layoutAnchor = tGo.transform;
+			layoutAnchor.transform.position = layoutCenter;
+        }
+
+		CardProspector cp;
+
+		foreach(SlotDef tSD in layout.slotDefs)
+        {
+			cp = Draw();
+			cp.faceUp = tSD.faceUp;
+
+			cp.transform.parent = layoutAnchor;
+			cp.transform.localPosition = new Vector3(layout.multiplier.x * tSD.x, layout.multiplier.y * tSD.y, -tSD.layerID);
+			cp.layoutID = tSD.id;
+			cp.slotDef = tSD;
+			cp.state = eCardState.tableau;
+
+			tableau.Add(cp);
+        }
+    }
 }
