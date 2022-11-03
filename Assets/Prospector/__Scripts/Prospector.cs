@@ -4,30 +4,20 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum eCardState
+{
+    drawpile,
+    tableau,
+    target,
+    discard
+}
 
-public class Prospector : MonoBehaviour {
+public class Prospector : Card
+{
+    [Header("Set Dynamically: CardProspector")]
 
-	static public Prospector 	S;
-
-	[Header("Set in Inspector")]
-	public TextAsset			deckXML;
-	public TextAsset layoutXML;
-
-	[Header("Set Dynamically")]
-	public Deck					deck;
-	public Layout layout;
-
-	void Awake(){
-		S = this;
-	}
-
-	void Start() {
-		deck = GetComponent<Deck> ();
-		deck.InitDeck (deckXML.text);
-		Deck.Shuffle(ref deck.cards);
-
-		layout = GetComponent<Layout>();
-		layout.ReadLayout(layoutXML.text);
-	}
-
+    public eCardState state = eCardState.drawpile;
+    public List<CardProspector> hiddenBy = new List<CardProspector>;
+    public int layoutID;
+    public SlotDef slotDef;
 }
