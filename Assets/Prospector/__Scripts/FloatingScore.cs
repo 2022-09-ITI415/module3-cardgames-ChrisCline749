@@ -66,7 +66,7 @@ public class FloatingScore : MonoBehaviour
                 }
                 else
                 {
-                    state = eFSState.idle
+                    state = eFSState.idle;
                 }
             }
             else
