@@ -20,6 +20,7 @@ public class Prospector : MonoBehaviour {
 	public Vector2 fsPosMid2 = new Vector2(0.4f, 1);
 	public Vector2 fsPosEnd = new Vector2(0.5f, 0.95f);
 	public float reloadDelay = 2;
+	public Text gameOverText, roundResultText, highScoreText;
 
 	[Header("Set Dynamically")]
 	public Deck					deck;
@@ -33,6 +34,7 @@ public class Prospector : MonoBehaviour {
 
 	void Awake(){
 		S = this;
+		SetUpUiTexts();
 	}
 
 	void Start() {
@@ -46,6 +48,30 @@ public class Prospector : MonoBehaviour {
 		layout.ReadLayout(layoutXML.text);
 		drawPile = ConvertListCardsToListCardProspectors(deck.cards);
 		LayoutGame();
+	}
+
+	void SetUpUiTexts()
+    {
+		GameObject go = GameObject.Find("HighScore");
+		if (go != null) highScoreText = go.GetComponent<Text>();
+
+		int highscore = ScoreManager.highScore;
+		string hScore = "Highscore: " + Utils.AddCommasToNumber(highscore);
+		go.GetComponent<Text>().text = hScore;
+
+		go = GameObject.Find("RoundResult");
+		if (go != null) roundResultText = go.GetComponent<Text>();
+
+		go = GameObject.Find("GameOver");
+		if (go != null) gameOverText = go.GetComponent<Text>();
+
+		ShowResultsUi(false);
+	}
+
+	public void ShowResultsUi(bool show)
+    {
+		gameOverText.gameObject.SetActive(show);
+		roundResultText.gameObject.SetActive(show);
 	}
 
 	List<CardProspector> ConvertListCardsToListCardProspectors(List<Card> lCD)
@@ -235,14 +261,28 @@ public class Prospector : MonoBehaviour {
 
 	void GameOver (bool won)
     {
+		int score = ScoreManager.StatScore;
+		if (fsRun != null) score += fsRun.score;
+
 		if (won)
 		{
-			print("Game over, you win!");
+			gameOverText.text = "Round Over";
+			roundResultText.text = "Round Score: " + score;
+			ShowResultsUi(true);
 			ScoreManager.EventCheck(eScoreEvent.gameWin);
 			FloatingScoreHandler(eScoreEvent.gameWin);
 		}
-		else { 
-			print("Game over, you lose.");
+		else {
+			gameOverText.text = "Game Over";
+			if (ScoreManager.highScore <= score)
+            {
+				roundResultText.text = "New Highscore!\nFinal Score: " + score;
+			}
+			else
+            {
+				roundResultText.text = "Final Score: " + score;
+			}
+			ShowResultsUi(true);
 			ScoreManager.EventCheck(eScoreEvent.gameLoss);
 			FloatingScoreHandler(eScoreEvent.gameLoss);
 		}
