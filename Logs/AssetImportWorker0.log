@@ -337,3 +337,141 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 79307.691041 seconds.
+  path: Assets/OtherGame
+  artifactKey: Guid(611fad1c58d1745cd90ab04ce42540ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OtherGame using Guid(611fad1c58d1745cd90ab04ce42540ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f4c446aed3a283c0b25b23feff1b4d3') in 0.039476 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.701953 seconds.
+  path: Assets/OtherGame/GameScene.unity
+  artifactKey: Guid(8a69785a7c7394d1286e8e0987d1c268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OtherGame/GameScene.unity using Guid(8a69785a7c7394d1286e8e0987d1c268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d534a8195f6fb87ac9ae0a12795c395') in 0.007089 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 20.422720 seconds.
+  path: Assets/OtherGame/GolfSolitare.unity
+  artifactKey: Guid(8a69785a7c7394d1286e8e0987d1c268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OtherGame/GolfSolitare.unity using Guid(8a69785a7c7394d1286e8e0987d1c268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '653513bca486e5ab79884d4e42e55a80') in 0.014003 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.015172 seconds.
+  path: Assets/Golf
+  artifactKey: Guid(611fad1c58d1745cd90ab04ce42540ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf using Guid(611fad1c58d1745cd90ab04ce42540ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bc799b066e1d85d67846e2d2745a492') in 0.007513 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 100.493163 seconds.
+  path: Assets/Golf/__Scripts
+  artifactKey: Guid(a4ef7359ed414964d8886338db5de22c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts using Guid(a4ef7359ed414964d8886338db5de22c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a99428076c0a9ef93d8d9f78a37f89e') in 0.019324 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.143835 seconds.
+  path: Assets/Golf/__Scripts/Card.cs
+  artifactKey: Guid(ca61313941ae62d4393c0a66cfacc903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Card.cs using Guid(ca61313941ae62d4393c0a66cfacc903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c1310f281120bb97429a4d64c803ac5') in 0.127127 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 125.414724 seconds.
+  path: Assets/Golf/__Scripts/CardProspector.cs
+  artifactKey: Guid(42c5acbe2620c0f45aa65a6403dd9db6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/CardProspector.cs using Guid(42c5acbe2620c0f45aa65a6403dd9db6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f96f48d80cea92dbd66fffa2dcdf7f25') in 0.010204 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 18.614619 seconds.
+  path: Assets/Golf/__Scripts/CardGolf.cs
+  artifactKey: Guid(42c5acbe2620c0f45aa65a6403dd9db6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/CardGolf.cs using Guid(42c5acbe2620c0f45aa65a6403dd9db6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0536ee01e8dc4c37a1a9a49fc3c34d7f') in 0.009513 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 31.603956 seconds.
+  path: Assets/Golf/__Scripts/CardGolf.cs
+  artifactKey: Guid(42c5acbe2620c0f45aa65a6403dd9db6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/CardGolf.cs using Guid(42c5acbe2620c0f45aa65a6403dd9db6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0619fe091c31bc23c0c9ab122873ba6') in 0.008285 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 30.703844 seconds.
+  path: Assets/Golf/__Scripts/Deck.cs
+  artifactKey: Guid(e9fc5e812e7526f4d8d75674806c8634) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Deck.cs using Guid(e9fc5e812e7526f4d8d75674806c8634) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '963bb30ea083c62101347cbc15d0de1b') in 0.015662 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 60.822633 seconds.
+  path: Assets/Golf/__Scripts/FloatingScore.cs
+  artifactKey: Guid(6f48dc7032a2a314abbd978da7923581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/FloatingScore.cs using Guid(6f48dc7032a2a314abbd978da7923581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db0daf98dcbb769e0fd1bd3496162471') in 0.034737 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 77.750193 seconds.
+  path: Assets/Golf/__Scripts/Layout.cs
+  artifactKey: Guid(0b9fed7bb8162d748b6e8c00d8e211f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Layout.cs using Guid(0b9fed7bb8162d748b6e8c00d8e211f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b22b09bf64c51a7e5308136f3da8a80') in 0.020109 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.029329 seconds.
+  path: Assets/Golf/__Scripts/GolfLayout.cs
+  artifactKey: Guid(0b9fed7bb8162d748b6e8c00d8e211f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/GolfLayout.cs using Guid(0b9fed7bb8162d748b6e8c00d8e211f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '125a348a8146ecf26c8845bb3989d6f8') in 0.006266 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 25.713944 seconds.
+  path: Assets/Golf/__Scripts/GolfLayout.cs
+  artifactKey: Guid(0b9fed7bb8162d748b6e8c00d8e211f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/GolfLayout.cs using Guid(0b9fed7bb8162d748b6e8c00d8e211f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a7fdbe98ee14c0c4e53d446baf5c204') in 0.004911 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 84.698702 seconds.
+  path: Assets/Golf/__Scripts/Prospector.cs
+  artifactKey: Guid(e9cb2a640dccd9b4b86d0c752fed2535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Prospector.cs using Guid(e9cb2a640dccd9b4b86d0c752fed2535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fb5c6f052a8f6644afc735a959cb6b9') in 0.016461 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.510829 seconds.
+  path: Assets/Golf/__Scripts/Golf.cs
+  artifactKey: Guid(e9cb2a640dccd9b4b86d0c752fed2535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Golf.cs using Guid(e9cb2a640dccd9b4b86d0c752fed2535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a322a1d35038832c58a110a2b8614af9') in 0.004525 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 23.508120 seconds.
+  path: Assets/Golf/__Scripts/Golf.cs
+  artifactKey: Guid(e9cb2a640dccd9b4b86d0c752fed2535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Golf.cs using Guid(e9cb2a640dccd9b4b86d0c752fed2535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9fb8aa7642f2be34eed96b381fc6d18') in 0.006748 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.697042 seconds.
+  path: Assets/Golf/__Scripts/PT_XMLReader.cs
+  artifactKey: Guid(b77e1dad8f1e68d4585ed10ca1a62f4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/PT_XMLReader.cs using Guid(b77e1dad8f1e68d4585ed10ca1a62f4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7134d0ba9043121a4ed1c7fe0064fc7e') in 0.017325 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.391642 seconds.
+  path: Assets/Golf/__Scripts/Scoreboard.cs
+  artifactKey: Guid(849da1d4fab5d6b48a62c041aabf5d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Scoreboard.cs using Guid(849da1d4fab5d6b48a62c041aabf5d01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ee5847db249f81e64745d8a69895b3') in 0.017310 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.786603 seconds.
+  path: Assets/Golf/__Scripts/ScoreManager.cs
+  artifactKey: Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/ScoreManager.cs using Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f32c9bd24f1103b89779990a1783f08') in 0.006352 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.926206 seconds.
+  path: Assets/Golf/__Scripts/Utils.cs
+  artifactKey: Guid(5138773562d01bf4cbd83c93dafb9674) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/Utils.cs using Guid(5138773562d01bf4cbd83c93dafb9674) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b667a39a9406945b1e3fa61c5261c8ef') in 0.006345 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 105.684091 seconds.
+  path: Assets/Golf/__Scripts/GolfScoreManager.cs
+  artifactKey: Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/GolfScoreManager.cs using Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f957e7b8778020d061e62bd60f243ebc') in 0.005998 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 43.580904 seconds.
+  path: Assets/Golf/__Scripts/GolfScoreManager.cs
+  artifactKey: Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/GolfScoreManager.cs using Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6f133bbbcadc2ad0e65d99d21116fdd') in 0.006593 seconds 
