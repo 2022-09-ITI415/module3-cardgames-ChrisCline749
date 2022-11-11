@@ -475,3 +475,9 @@ Received Import Request.
   path: Assets/Golf/__Scripts/GolfScoreManager.cs
   artifactKey: Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Golf/__Scripts/GolfScoreManager.cs using Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6f133bbbcadc2ad0e65d99d21116fdd') in 0.006593 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 87.393404 seconds.
+  path: Assets/Golf/__Scripts/GolfScoreManager.cs
+  artifactKey: Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Golf/__Scripts/GolfScoreManager.cs using Guid(8d31766a6530b0141963acc927e6af8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bc40e7cdd055d81afb478beff2607bb') in 0.014591 seconds 

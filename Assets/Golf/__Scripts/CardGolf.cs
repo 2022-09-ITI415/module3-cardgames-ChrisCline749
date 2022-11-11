@@ -7,13 +7,13 @@ public class CardGolf : Card
         [Header("Set Dynamically: CardProspector")]
 
         public eCardState state = eCardState.drawpile;
-        public List<CardProspector> hiddenBy = new List<CardProspector>();
+        public List<CardGolf> hiddenBy = new List<CardGolf>();
         public int layoutID;
         public SlotDef slotDef;
 
     public override void OnMouseUpAsButton()
     {
-        Prospector.S.CardClicked(this);
+        Golf.S.CardClicked(this);
         base.OnMouseUpAsButton();
     }
 }

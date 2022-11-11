@@ -13,7 +13,7 @@ public enum eGolfScoreEvent
 
 public class GolfScoreManager : MonoBehaviour
 {
-    static private ScoreManager S;
+    static private GolfScoreManager S;
 
     static public int scoreFromLastRound;
     static public int highScore;

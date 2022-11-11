@@ -72,17 +72,3 @@ public class GolfLayout : MonoBehaviour
         }
     }
 }
-
-[System.Serializable]
-public class SlotDef
-{
-    public float x;
-    public float y;
-    public int layerID = 0;
-    public int id;
-    public bool faceUp = false;
-    public string layerName = "Default";
-    public List<int> hiddenBy = new List<int>();
-    public string type = "slot";
-    public Vector3 stagger;
-}

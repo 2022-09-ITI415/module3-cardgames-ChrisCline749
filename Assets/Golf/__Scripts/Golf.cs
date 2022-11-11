@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class Golf : MonoBehaviour {
 
-	static public Prospector 	S;
+	static public Golf 	S;
 
 	[Header("Set in Inspector")]
 	public TextAsset			deckXML;
@@ -25,11 +25,11 @@ public class Golf : MonoBehaviour {
 	[Header("Set Dynamically")]
 	public Deck					deck;
 	public Layout layout;
-	public List<CardProspector> drawPile;
+	public List<CardGolf> drawPile;
 	public Transform layoutAnchor;
-	public CardProspector target;
-	public List<CardProspector> tableau;
-	public List<CardProspector> discardPile;
+	public CardGolf target;
+	public List<CardGolf> tableau;
+	public List<CardGolf> discardPile;
 	public FloatingScore fsRun;
 
 	void Awake(){
@@ -46,7 +46,7 @@ public class Golf : MonoBehaviour {
 
 		layout = GetComponent<Layout>();
 		layout.ReadLayout(layoutXML.text);
-		drawPile = ConvertListCardsToListCardProspectors(deck.cards);
+		drawPile = ConvertListCardsToListCardGolfs(deck.cards);
 		LayoutGame();
 	}
 
@@ -74,21 +74,21 @@ public class Golf : MonoBehaviour {
 		roundResultText.gameObject.SetActive(show);
 	}
 
-	List<CardProspector> ConvertListCardsToListCardProspectors(List<Card> lCD)
+	List<CardGolf> ConvertListCardsToListCardGolfs(List<Card> lCD)
     {
-		List<CardProspector> lCP = new List<CardProspector>();
-		CardProspector tCP;
+		List<CardGolf> lCP = new List<CardGolf>();
+		CardGolf tCP;
 		foreach (Card tCD in lCD)
         {
-			tCP = tCD as CardProspector; //a
+			tCP = tCD as CardGolf; //a
 			lCP.Add(tCP);
         }
 		return lCP;
     }
 
-	CardProspector Draw()
+	CardGolf Draw()
     {
-		CardProspector cd = drawPile[0];
+		CardGolf cd = drawPile[0];
 		drawPile.RemoveAt(0);
 		return cd;
     }
@@ -102,7 +102,7 @@ public class Golf : MonoBehaviour {
 			layoutAnchor.transform.position = layoutCenter;
         }
 
-		CardProspector cp;
+		CardGolf cp;
 
 		foreach(SlotDef tSD in layout.slotDefs)
         {
@@ -120,7 +120,7 @@ public class Golf : MonoBehaviour {
 			tableau.Add(cp);
         }
 
-		foreach (CardProspector tCP in tableau)
+		foreach (CardGolf tCP in tableau)
         {
 			foreach (int hid in tCP.slotDef.hiddenBy)
             {
@@ -133,9 +133,9 @@ public class Golf : MonoBehaviour {
 		UpdateDrawPile();
     }
 
-	CardProspector FindCardByLayoutID(int layoutID)
+	CardGolf FindCardByLayoutID(int layoutID)
     {
-		foreach (CardProspector tCP in tableau)
+		foreach (CardGolf tCP in tableau)
         {
 			if (tCP.layoutID == layoutID) return tCP;
         }
@@ -144,10 +144,10 @@ public class Golf : MonoBehaviour {
 
 	void SetTableauFaces()
     {
-		foreach( CardProspector cd in tableau)
+		foreach( CardGolf cd in tableau)
         {
 			bool faceUp = true;
-			foreach (CardProspector cover in cd.hiddenBy)
+			foreach (CardGolf cover in cd.hiddenBy)
             {
 				if (cover.state == eCardState.tableau) faceUp = false;
             }
@@ -156,7 +156,7 @@ public class Golf : MonoBehaviour {
 		
     }
 
-	void MoveToDiscard(CardProspector cd)
+	void MoveToDiscard(CardGolf cd)
     {
 		cd.state = eCardState.discard;
 		discardPile.Add(cd);
@@ -171,7 +171,7 @@ public class Golf : MonoBehaviour {
 		cd.SetSortOrder(-100 + discardPile.Count);
     }
 
-	void MoveToTarget(CardProspector cd)
+	void MoveToTarget(CardGolf cd)
 	{
 		if (target != null) MoveToDiscard(target);
 		target = cd;
@@ -190,7 +190,7 @@ public class Golf : MonoBehaviour {
 
 	void UpdateDrawPile()
     {
-		CardProspector cd;
+		CardGolf cd;
 
 		for (int i = 0; i<drawPile.Count; i++)
         {
@@ -211,7 +211,7 @@ public class Golf : MonoBehaviour {
 		}
     }
 
-	public void CardClicked(CardProspector cd)
+	public void CardClicked(CardGolf cd)
     {
 		switch(cd.state)
         {
@@ -251,7 +251,7 @@ public class Golf : MonoBehaviour {
 
 		if (drawPile.Count > 0) return;
 
-		foreach (CardProspector cd in tableau)
+		foreach (CardGolf cd in tableau)
         {
 			if (AdjacentRank(cd, target)) return;
         }
@@ -294,7 +294,7 @@ public class Golf : MonoBehaviour {
 		SceneManager.LoadScene("__Prospector_Scene_0");
 	}
 
-	public bool AdjacentRank(CardProspector c0, CardProspector c1)
+	public bool AdjacentRank(CardGolf c0, CardGolf c1)
     {
 		if (!c0.faceUp || !c1.faceUp) return false;
 
