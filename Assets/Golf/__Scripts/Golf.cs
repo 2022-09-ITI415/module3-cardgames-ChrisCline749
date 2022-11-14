@@ -11,10 +11,10 @@ public class Golf : MonoBehaviour {
 
 	[Header("Set in Inspector")]
 	public TextAsset			deckXML;
-	public TextAsset layoutXML;
+	public TextAsset GolfLayoutXML;
 	public float xOffset = 3;
 	public float yOffset = -2.5f;
-	public Vector3 layoutCenter;
+	public Vector3 GolfLayoutCenter;
 	public Vector2 fsPosMid = new Vector2(0.5f, 0.9f);
 	public Vector2 fsPosRun = new Vector2(0.5f, 0.75f);
 	public Vector2 fsPosMid2 = new Vector2(0.4f, 1);
@@ -23,10 +23,10 @@ public class Golf : MonoBehaviour {
 	public Text gameOverText, roundResultText, highScoreText;
 
 	[Header("Set Dynamically")]
-	public Deck					deck;
-	public Layout layout;
+	public GolfDeck					deck;
+	public GolfLayout GolfLayout;
 	public List<CardGolf> drawPile;
-	public Transform layoutAnchor;
+	public Transform GolfLayoutAnchor;
 	public CardGolf target;
 	public List<CardGolf> tableau;
 	public List<CardGolf> discardPile;
@@ -37,33 +37,38 @@ public class Golf : MonoBehaviour {
 		SetUpUiTexts();
 	}
 
-	void Start() {
-		Scoreboard.S.score = ScoreManager.StatScore;
+    void Start()
+    {
+		Scoreboard.S.score = GolfScoreManager.StatScore;
 
-		deck = GetComponent<Deck> ();
+		deck = GetComponent<GolfDeck> ();
 		deck.InitDeck (deckXML.text);
 		Deck.Shuffle(ref deck.cards);
 
-		layout = GetComponent<Layout>();
-		layout.ReadLayout(layoutXML.text);
+		GolfLayout = GetComponent<GolfLayout>();
+		GolfLayout.ReadLayout(GolfLayoutXML.text);
 		drawPile = ConvertListCardsToListCardGolfs(deck.cards);
-		LayoutGame();
+		GolfLayoutGame();
 	}
 
 	void SetUpUiTexts()
     {
 		GameObject go = GameObject.Find("HighScore");
 		if (go != null) highScoreText = go.GetComponent<Text>();
+		if (go == null) Debug.Log("Highscore error");
 
-		int highscore = ScoreManager.highScore;
+		int highscore = GolfScoreManager.highScore;
 		string hScore = "Highscore: " + Utils.AddCommasToNumber(highscore);
 		go.GetComponent<Text>().text = hScore;
 
 		go = GameObject.Find("RoundResult");
 		if (go != null) roundResultText = go.GetComponent<Text>();
+		if (go == null) Debug.Log("Round Result error");
 
 		go = GameObject.Find("GameOver");
 		if (go != null) gameOverText = go.GetComponent<Text>();
+		if (go == null) Debug.Log("Game over error");
+
 
 		ShowResultsUi(false);
 	}
@@ -93,24 +98,24 @@ public class Golf : MonoBehaviour {
 		return cd;
     }
 
-	void LayoutGame()
+	void GolfLayoutGame()
     {
-		if (layoutAnchor == null)
+		if (GolfLayoutAnchor == null)
         {
-			GameObject tGo = new GameObject("_LayoutAnchor");
-			layoutAnchor = tGo.transform;
-			layoutAnchor.transform.position = layoutCenter;
+			GameObject tGo = new GameObject("_GolfLayoutAnchor");
+			GolfLayoutAnchor = tGo.transform;
+			GolfLayoutAnchor.transform.position = GolfLayoutCenter;
         }
 
 		CardGolf cp;
 
-		foreach(SlotDef tSD in layout.slotDefs)
+		foreach(SlotDef tSD in GolfLayout.slotDefs)
         {
 			cp = Draw();
 			cp.faceUp = tSD.faceUp;
 
-			cp.transform.parent = layoutAnchor;
-			cp.transform.localPosition = new Vector3(layout.multiplier.x * tSD.x, layout.multiplier.y * tSD.y, -tSD.layerID);
+			cp.transform.parent = GolfLayoutAnchor;
+			cp.transform.localPosition = new Vector3(GolfLayout.multiplier.x * tSD.x, GolfLayout.multiplier.y * tSD.y, -tSD.layerID);
 			cp.layoutID = tSD.id;
 			cp.slotDef = tSD;
 			cp.state = eCardState.tableau;
@@ -124,7 +129,7 @@ public class Golf : MonoBehaviour {
         {
 			foreach (int hid in tCP.slotDef.hiddenBy)
             {
-				cp = FindCardByLayoutID(hid);
+				cp = FindCardByGolfLayoutID(hid);
 				tCP.hiddenBy.Add(cp);
             }
         }
@@ -133,11 +138,11 @@ public class Golf : MonoBehaviour {
 		UpdateDrawPile();
     }
 
-	CardGolf FindCardByLayoutID(int layoutID)
+	CardGolf FindCardByGolfLayoutID(int GolfLayoutID)
     {
 		foreach (CardGolf tCP in tableau)
         {
-			if (tCP.layoutID == layoutID) return tCP;
+			if (tCP.layoutID == GolfLayoutID) return tCP;
         }
 		return null;
     }
@@ -160,14 +165,14 @@ public class Golf : MonoBehaviour {
     {
 		cd.state = eCardState.discard;
 		discardPile.Add(cd);
-		cd.transform.parent = layoutAnchor;
+		cd.transform.parent = GolfLayoutAnchor;
 
 		cd.transform.localPosition = new Vector3(
-			layout.multiplier.x * layout.discardPile.x,
-			layout.multiplier.y * layout.discardPile.y,
-			-layout.discardPile.layerID+0.5f);
+			GolfLayout.multiplier.x * GolfLayout.discardPile.x,
+			GolfLayout.multiplier.y * GolfLayout.discardPile.y,
+			-GolfLayout.discardPile.layerID+0.5f);
 		cd.faceUp = true;
-		cd.SetSortingLayerName(layout.discardPile.layerName);
+		cd.SetSortingLayerName(GolfLayout.discardPile.layerName);
 		cd.SetSortOrder(-100 + discardPile.Count);
     }
 
@@ -176,15 +181,15 @@ public class Golf : MonoBehaviour {
 		if (target != null) MoveToDiscard(target);
 		target = cd;
 		cd.state = eCardState.target;
-		cd.transform.parent = layoutAnchor;
+		cd.transform.parent = GolfLayoutAnchor;
 
 		cd.transform.localPosition = new Vector3(
-			layout.multiplier.x * layout.discardPile.x,
-			layout.multiplier.y * layout.discardPile.y,
-			-layout.discardPile.layerID);
+			GolfLayout.multiplier.x * GolfLayout.discardPile.x,
+			GolfLayout.multiplier.y * GolfLayout.discardPile.y,
+			-GolfLayout.discardPile.layerID);
 
 		cd.faceUp = true;
-		cd.SetSortingLayerName(layout.discardPile.layerName);
+		cd.SetSortingLayerName(GolfLayout.discardPile.layerName);
 		cd.SetSortOrder(0);
 	}
 
@@ -195,18 +200,18 @@ public class Golf : MonoBehaviour {
 		for (int i = 0; i<drawPile.Count; i++)
         {
 			cd = drawPile[i];
-			cd.transform.parent = layoutAnchor;
+			cd.transform.parent = GolfLayoutAnchor;
 
-			Vector2 dpStagger = layout.drawPile.stagger;
+			Vector2 dpStagger = GolfLayout.drawPile.stagger;
 
 			cd.transform.localPosition = new Vector3(
-			layout.multiplier.x * (layout.drawPile.x + i*dpStagger.x),
-			layout.multiplier.y * (layout.drawPile.y + i * dpStagger.y),
-			-layout.drawPile.layerID+0.1f*i);
+			GolfLayout.multiplier.x * (GolfLayout.drawPile.x + i*dpStagger.x),
+			GolfLayout.multiplier.y * (GolfLayout.drawPile.y + i * dpStagger.y),
+			-GolfLayout.drawPile.layerID+0.1f*i);
 
 			cd.faceUp = false;
 			cd.state = eCardState.drawpile;
-			cd.SetSortingLayerName(layout.drawPile.layerName);
+			cd.SetSortingLayerName(GolfLayout.drawPile.layerName);
 			cd.SetSortOrder(-10*i);
 		}
     }
@@ -222,7 +227,7 @@ public class Golf : MonoBehaviour {
 				MoveToDiscard(target);
 				MoveToTarget(Draw());
 				UpdateDrawPile();
-				ScoreManager.EventCheck(eScoreEvent.draw);
+				GolfScoreManager.EventCheck(eScoreEvent.draw);
 				FloatingScoreHandler(eScoreEvent.draw);
 				break;
 
@@ -234,7 +239,7 @@ public class Golf : MonoBehaviour {
 				tableau.Remove(cd);
 				MoveToTarget(cd);
 				SetTableauFaces();
-				ScoreManager.EventCheck(eScoreEvent.mine);
+				GolfScoreManager.EventCheck(eScoreEvent.mine);
 				FloatingScoreHandler(eScoreEvent.mine);
 				break;
         }
@@ -261,7 +266,7 @@ public class Golf : MonoBehaviour {
 
 	void GameOver (bool won)
     {
-		int score = ScoreManager.StatScore;
+		int score = GolfScoreManager.StatScore;
 		if (fsRun != null) score += fsRun.score;
 
 		if (won)
@@ -269,12 +274,12 @@ public class Golf : MonoBehaviour {
 			gameOverText.text = "Round Over";
 			roundResultText.text = "Round Score: " + score;
 			ShowResultsUi(true);
-			ScoreManager.EventCheck(eScoreEvent.gameWin);
+			GolfScoreManager.EventCheck(eScoreEvent.gameWin);
 			FloatingScoreHandler(eScoreEvent.gameWin);
 		}
 		else {
 			gameOverText.text = "Game Over";
-			if (ScoreManager.highScore <= score)
+			if (GolfScoreManager.highScore <= score)
             {
 				roundResultText.text = "New Highscore!\nFinal Score: " + score;
 			}
@@ -283,7 +288,7 @@ public class Golf : MonoBehaviour {
 				roundResultText.text = "Final Score: " + score;
 			}
 			ShowResultsUi(true);
-			ScoreManager.EventCheck(eScoreEvent.gameLoss);
+			GolfScoreManager.EventCheck(eScoreEvent.gameLoss);
 			FloatingScoreHandler(eScoreEvent.gameLoss);
 		}
 		Invoke("ReloadLevel", reloadDelay);
@@ -336,7 +341,7 @@ public class Golf : MonoBehaviour {
 				fsPts.Add(p0);
 				fsPts.Add(fsPosMid);
 				fsPts.Add(fsPosRun);
-				fs = Scoreboard.S.CreateFloatingScore(ScoreManager.StatChain, fsPts);
+				fs = Scoreboard.S.CreateFloatingScore(GolfScoreManager.StatChain, fsPts);
 				if(fsRun == null)
                 {
 					fsRun = fs;

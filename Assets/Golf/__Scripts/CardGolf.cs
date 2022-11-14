@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardGolf : Card
 {
-        [Header("Set Dynamically: CardProspector")]
+        [Header("Set Dynamically: CardGolf")]
 
         public eCardState state = eCardState.drawpile;
         public List<CardGolf> hiddenBy = new List<CardGolf>();
