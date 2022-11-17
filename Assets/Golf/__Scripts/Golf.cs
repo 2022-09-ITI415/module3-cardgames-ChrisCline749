@@ -228,7 +228,7 @@ public class Golf : MonoBehaviour {
 				MoveToTarget(Draw());
 				UpdateDrawPile();
 				GolfScoreManager.EventCheck(eScoreEvent.draw);
-				FloatingScoreHandler(eScoreEvent.draw);
+				//FloatingScoreHandler(eScoreEvent.draw);
 				break;
 
 			case eCardState.tableau:
@@ -240,7 +240,7 @@ public class Golf : MonoBehaviour {
 				MoveToTarget(cd);
 				SetTableauFaces();
 				GolfScoreManager.EventCheck(eScoreEvent.mine);
-				FloatingScoreHandler(eScoreEvent.mine);
+				//FloatingScoreHandler(eScoreEvent.mine);
 				break;
         }
 		CheckForGameOver();
@@ -267,7 +267,7 @@ public class Golf : MonoBehaviour {
 	void GameOver (bool won)
     {
 		int score = GolfScoreManager.StatScore;
-		if (fsRun != null) score += fsRun.score;
+		//if (fsRun != null) score += fsRun.score;
 
 		if (won)
 		{
@@ -275,7 +275,7 @@ public class Golf : MonoBehaviour {
 			roundResultText.text = "Round Score: " + score;
 			ShowResultsUi(true);
 			GolfScoreManager.EventCheck(eScoreEvent.gameWin);
-			FloatingScoreHandler(eScoreEvent.gameWin);
+			//FloatingScoreHandler(eScoreEvent.gameWin);
 		}
 		else {
 			gameOverText.text = "Game Over";
@@ -289,7 +289,7 @@ public class Golf : MonoBehaviour {
 			}
 			ShowResultsUi(true);
 			GolfScoreManager.EventCheck(eScoreEvent.gameLoss);
-			FloatingScoreHandler(eScoreEvent.gameLoss);
+			//FloatingScoreHandler(eScoreEvent.gameLoss);
 		}
 		Invoke("ReloadLevel", reloadDelay);
     }
@@ -310,6 +310,7 @@ public class Golf : MonoBehaviour {
         
     }
 
+	/*
 	void FloatingScoreHandler (eScoreEvent evt)
     {
 		List<Vector2> fsPts;
@@ -355,4 +356,5 @@ public class Golf : MonoBehaviour {
 				break;
         }
     }
+	*/
 }
