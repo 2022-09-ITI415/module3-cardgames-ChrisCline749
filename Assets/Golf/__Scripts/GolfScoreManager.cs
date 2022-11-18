@@ -27,7 +27,7 @@ public class GolfScoreManager : MonoBehaviour
     {
         if (S == null) S = this;
 
-        if (PlayerPrefs.HasKey("ProspectorHighScore")) highScore = PlayerPrefs.GetInt("ProspectorHighScore");
+        if (PlayerPrefs.HasKey("GolfHighScore")) highScore = PlayerPrefs.GetInt("GolfHighScore");
 
         score += scoreFromLastRound;
         scoreFromLastRound = 0;

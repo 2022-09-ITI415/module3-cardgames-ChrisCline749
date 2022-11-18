@@ -136,6 +136,7 @@ public class Golf : MonoBehaviour {
             }
         }
 
+		SetTableauFaces();
 		MoveToTarget(Draw());
 		UpdateDrawPile();
     }
@@ -314,7 +315,7 @@ public class Golf : MonoBehaviour {
 
 	void ReloadLevel()
     {
-		SceneManager.LoadScene("__Prospector_Scene_0");
+		SceneManager.LoadScene("GolfSolitare");
 	}
 
 	public bool AdjacentRank(CardGolf c0, CardGolf c1)
