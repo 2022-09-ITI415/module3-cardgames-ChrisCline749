@@ -238,6 +238,8 @@ public class Golf : MonoBehaviour {
 				bool validMatch = true;
 				if(!cd.faceUp) validMatch = false;
 				if(!AdjacentRank(cd, target)) validMatch = false;
+				if (target.rank == 13) validMatch = false;
+				if (target.rank == 1 && cd.rank == 13) validMatch = false;
 				if (!validMatch) return;
 				tableau.Remove(cd);
 				MoveToTarget(cd);
