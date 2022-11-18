@@ -31,6 +31,8 @@ public class Golf : MonoBehaviour {
 	public List<CardGolf> tableau;
 	public List<CardGolf> discardPile;
 	public FloatingScore fsRun;
+	public int maxRounds = 3;
+	public int currentRound;
 
 	void Awake(){
 		S = this;
@@ -267,30 +269,46 @@ public class Golf : MonoBehaviour {
 	void GameOver (bool won)
     {
 		int score = GolfScoreManager.StatScore;
+		int roundScore = 0;
+
+		for (int i =0; i<tableau.Count; i++)
+        {
+			roundScore++;
+        }
+
 		//if (fsRun != null) score += fsRun.score;
 
-		if (won)
+		if (currentRound < maxRounds)
 		{
+			currentRound++;
+			//increse and save currentRound
+
 			gameOverText.text = "Round Over";
-			roundResultText.text = "Round Score: " + score;
+			roundResultText.text = "Round Score: " + roundScore + "\nTotal Score: " + score;
 			ShowResultsUi(true);
 			GolfScoreManager.EventCheck(eScoreEvent.gameWin);
+
 			//FloatingScoreHandler(eScoreEvent.gameWin);
 		}
-		else {
+		else
+		{
 			gameOverText.text = "Game Over";
 			if (GolfScoreManager.highScore <= score)
-            {
+			{
 				roundResultText.text = "New Highscore!\nFinal Score: " + score;
 			}
 			else
-            {
+			{
 				roundResultText.text = "Final Score: " + score;
 			}
 			ShowResultsUi(true);
 			GolfScoreManager.EventCheck(eScoreEvent.gameLoss);
+
 			//FloatingScoreHandler(eScoreEvent.gameLoss);
 		}
+
+
+
 		Invoke("ReloadLevel", reloadDelay);
     }
 
