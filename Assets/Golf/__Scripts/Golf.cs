@@ -275,7 +275,7 @@ public class Golf : MonoBehaviour {
 
 		//if (fsRun != null) score += fsRun.score;
 
-		if (currentRound < maxRounds)
+		if (GolfScoreManager.roundCount < maxRounds)
 		{
 			currentRound++;
 			//increse and save currentRound

@@ -17,6 +17,7 @@ public class GolfScoreManager : MonoBehaviour
 
     static public int scoreFromLastRound;
     static public int highScore;
+    static public int roundCount;
 
     [Header("Set Dynamically")]
     public int chain = 0;
@@ -25,7 +26,15 @@ public class GolfScoreManager : MonoBehaviour
 
     void Awake()
     {
-        if (S == null) S = this;
+        if (S == null)
+        {
+            S = this;
+        }
+
+        if (roundCount == 0)
+        {
+            roundCount = 1;
+        }
 
         if (PlayerPrefs.HasKey("GolfHighScore")) highScore = PlayerPrefs.GetInt("GolfHighScore");
 
@@ -61,7 +70,8 @@ public class GolfScoreManager : MonoBehaviour
         {
             case eScoreEvent.gameWin:
                 scoreFromLastRound = score;
-                print("You won the round! Round Score: " + roundScore);
+                print("Round Score: " + roundScore + "Round: " + roundCount);
+                roundCount++;
                 break;
 
             case eScoreEvent.gameLoss:
@@ -75,6 +85,7 @@ public class GolfScoreManager : MonoBehaviour
                 {
                     print("Final Score: " + score);
                 }
+                roundCount = 1;
                 break;
 
             default:
