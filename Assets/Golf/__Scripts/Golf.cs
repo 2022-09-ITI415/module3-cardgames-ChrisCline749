@@ -230,7 +230,7 @@ public class Golf : MonoBehaviour {
 				MoveToDiscard(target);
 				MoveToTarget(Draw());
 				UpdateDrawPile();
-				GolfScoreManager.EventCheck(eScoreEvent.draw);
+				//GolfScoreManager.EventCheck(eScoreEvent.draw);
 				//FloatingScoreHandler(eScoreEvent.draw);
 				break;
 
@@ -242,7 +242,7 @@ public class Golf : MonoBehaviour {
 				tableau.Remove(cd);
 				MoveToTarget(cd);
 				SetTableauFaces();
-				GolfScoreManager.EventCheck(eScoreEvent.mine);
+				//GolfScoreManager.EventCheck(eScoreEvent.mine);
 				//FloatingScoreHandler(eScoreEvent.mine);
 				break;
         }
@@ -270,12 +270,8 @@ public class Golf : MonoBehaviour {
 	void GameOver (bool won)
     {
 		int score = GolfScoreManager.StatScore;
-		int roundScore = 0;
 
-		for (int i =0; i<tableau.Count; i++)
-        {
-			roundScore++;
-        }
+		
 
 		//if (fsRun != null) score += fsRun.score;
 
@@ -285,30 +281,32 @@ public class Golf : MonoBehaviour {
 			//increse and save currentRound
 
 			gameOverText.text = "Round Over";
-			roundResultText.text = "Round Score: " + roundScore + "\nTotal Score: " + score;
 			ShowResultsUi(true);
 			GolfScoreManager.EventCheck(eScoreEvent.gameWin);
+			roundResultText.text = "Round Score: " + this.GetComponent<GolfScoreManager>().roundScore + "\nTotal Score: " + this.GetComponent<GolfScoreManager>().score;
 
 			//FloatingScoreHandler(eScoreEvent.gameWin);
 		}
 		else
 		{
 			gameOverText.text = "Game Over";
+			GolfScoreManager.EventCheck(eScoreEvent.gameLoss);
 			if (GolfScoreManager.highScore <= score)
 			{
-				roundResultText.text = "New Highscore!\nFinal Score: " + score;
+				roundResultText.text = "New Highscore!\n Round Score: " + this.GetComponent<GolfScoreManager>().roundScore + "\nFinal Score: " + this.GetComponent<GolfScoreManager>().score;
 			}
 			else
 			{
-				roundResultText.text = "Final Score: " + score;
+				roundResultText.text = "Round Score: " + this.GetComponent<GolfScoreManager>().roundScore + "\nFinal Score: " + this.GetComponent<GolfScoreManager>().score;
 			}
 			ShowResultsUi(true);
-			GolfScoreManager.EventCheck(eScoreEvent.gameLoss);
+			
 
 			//FloatingScoreHandler(eScoreEvent.gameLoss);
 		}
 
 
+		//this.GetComponent<GolfScoreManager>().roundScore = 0;
 
 		Invoke("ReloadLevel", reloadDelay);
     }

@@ -20,7 +20,7 @@ public class GolfScoreManager : MonoBehaviour
 
     [Header("Set Dynamically")]
     public int chain = 0;
-    public int scoreRun = 0;
+    public int roundScore = 0;
     public int score = 0;
 
     void Awake()
@@ -46,17 +46,14 @@ public class GolfScoreManager : MonoBehaviour
     {
         switch (evt)
         {
-            case eScoreEvent.draw:
             case eScoreEvent.gameWin:
             case eScoreEvent.gameLoss:
+                for (int i = 0; i < this.GetComponent<Golf>().tableau.Count; i++)
+                {
+                    roundScore++;
+                }
                 chain = 0;
-                score += scoreRun;
-                scoreRun = 0;
-                break;
-
-            case eScoreEvent.mine:
-                chain++;
-                scoreRun += chain;
+                score += roundScore;
                 break;
         }
 
@@ -64,11 +61,11 @@ public class GolfScoreManager : MonoBehaviour
         {
             case eScoreEvent.gameWin:
                 scoreFromLastRound = score;
-                print("You won the round! Round Score: " + score);
+                print("You won the round! Round Score: " + roundScore);
                 break;
 
             case eScoreEvent.gameLoss:
-                if(highScore <= score)
+                if(highScore >= score)
                 {
                     print("New High Score! Score: " + score);
                     highScore = score;
@@ -81,12 +78,12 @@ public class GolfScoreManager : MonoBehaviour
                 break;
 
             default:
-                print("score: " + score + "  Run Score: " + scoreRun + "  Chain: " + chain);
+                print("score: " + score + "  Run Score: " + roundScore + "  Chain: " + chain);
                 break;
         }
     }
 
     static public int StatChain { get { return S.chain; } }
     static public int StatScore { get { return S.score; } }
-    static public int StatScoreRun { get { return S.scoreRun; } }
+    static public int StatScoreRun { get { return S.roundScore; } }
 }
