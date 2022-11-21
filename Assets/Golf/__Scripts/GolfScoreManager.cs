@@ -36,7 +36,8 @@ public class GolfScoreManager : MonoBehaviour
             roundCount = 1;
         }
 
-        if (PlayerPrefs.HasKey("GolfHighScore")) highScore = PlayerPrefs.GetInt("GolfHighScore");
+        if (!PlayerPrefs.HasKey("GolfHighScore")) PlayerPrefs.SetInt("GolfHighScore", 1000);
+        highScore = PlayerPrefs.GetInt("GolfHighScore");
 
         score += scoreFromLastRound;
         scoreFromLastRound = 0;
@@ -79,7 +80,7 @@ public class GolfScoreManager : MonoBehaviour
                 {
                     print("New High Score! Score: " + score);
                     highScore = score;
-                    PlayerPrefs.SetInt("ProspectorHighScore", score);
+                    PlayerPrefs.SetInt("GolfHighScore", score);
                 }
                 else
                 {
