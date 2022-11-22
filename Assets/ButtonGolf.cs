@@ -18,8 +18,21 @@ public class ButtonGolf : MonoBehaviour
         
     }
 
-    public void loadGolf()
+    public void loadGolf3()
     {
+        Golf.maxRounds = 3;
+        SceneManager.LoadScene("GolfSolitare");
+    }
+
+    public void loadGolf6()
+    {
+        Golf.maxRounds = 6;
+        SceneManager.LoadScene("GolfSolitare");
+    }
+
+    public void loadGolf9()
+    {
+        Golf.maxRounds = 9;
         SceneManager.LoadScene("GolfSolitare");
     }
 }

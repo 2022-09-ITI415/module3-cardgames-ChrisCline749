@@ -31,7 +31,7 @@ public class Golf : MonoBehaviour {
 	public List<CardGolf> tableau;
 	public List<CardGolf> discardPile;
 	public FloatingScore fsRun;
-	public int maxRounds = 3;
+	public static int maxRounds;
 	public int currentRound;
 
 	void Awake(){
@@ -51,6 +51,11 @@ public class Golf : MonoBehaviour {
 		GolfLayout.ReadLayout(GolfLayoutXML.text);
 		drawPile = ConvertListCardsToListCardGolfs(deck.cards);
 		GolfLayoutGame();
+
+		if (maxRounds == 0 || maxRounds == null)
+        {
+			maxRounds = 3;
+        }
 	}
 
 	void SetUpUiTexts()
