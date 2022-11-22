@@ -260,21 +260,31 @@ public class Golf : MonoBehaviour {
     {
 		if (tableau.Count == 0)
         {
-			GameOver(true);
+			GameOver();
 			return;
         }
 
 		if (drawPile.Count > 0) return;
-
+		if (target.rank == 13) 
+		{
+			GameOver();
+			return;
+		}
+		
 		foreach (CardGolf cd in tableau)
         {
+			if (target.rank == 1 && cd.rank == 13)
+            {
+				GameOver();
+				return;
+			}
 			if (AdjacentRank(cd, target)) return;
         }
 
-		GameOver(false);
+		GameOver();
     }
 
-	void GameOver (bool won)
+	void GameOver ()
     {
 		int score = GolfScoreManager.StatScore;
 
