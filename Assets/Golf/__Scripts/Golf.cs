@@ -36,11 +36,13 @@ public class Golf : MonoBehaviour {
 
 	void Awake(){
 		S = this;
-		SetUpUiTexts();
+		
 	}
 
     void Start()
     {
+		SetUpUiTexts();
+
 		Scoreboard.S.score = GolfScoreManager.StatScore;
 
 		deck = GetComponent<GolfDeck> ();
